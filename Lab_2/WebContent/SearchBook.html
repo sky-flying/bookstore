@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+Student Name: Chan Tai Man<br>
+Student ID: 13456789D<br><br>
+<div id="showtimes"></div>
+<script type="text/javascript" language="JavaScript">
+function showTime() {
+var time=new Date();
+ var hour=time.getHours(); 
+ var minutes=time.getMinutes();
+ var seconds=time.getSeconds();
+ var days=time.getDay();
+ var months=time.getMonth();
+ var years=time.getFullYear();
+  hour<10?hour='0'+hour:hour; 
+  minutes<10?minutes='0'+minutes:minutes; 
+  seconds<10?seconds='0'+seconds:seconds;
+  days<10?days='0'+days:days;
+  months<10?months='0'+months:months;
+  var now_time="The time now is: "+hour+":"+minutes+":"+seconds;
+  var now_date="The date is :"+days+"/"+months+"/"+years;
+  document.getElementById("showtimes").innerHTML= now_time+"<br>"+now_date;
+   }
+   setInterval("showTime()", 100);
+</script>
+<br>
+<br>Please choose <strong>either ISBN or Author</strong> to search books:<br>
+<script type="text/javascript" language="JavaScript">
+function isBlank(s) {
+     var i;
+     for(i=0;i<s.length;i++){
+        if (s.charAt(i)!=" ")
+          return false
+          }
+          return true
+}
+function validate(filevalue1,filevalue2) {
+       if(isBlank(filevalue1)&&isBlank(filevalue2))
+       {       alert("No input! please write again");
+       return false
+       }
+        return true
+ 
+}
+</script>
+<form action="QueryServlet" method="post" onsubmit="return validate(ISBN.value, author.value)">
+Search by ISBN:
+<input name="ISBN" type="text" ><br>
+Search by Author:<input name ="author" type="text"><br>
+<input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
